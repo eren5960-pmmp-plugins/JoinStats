@@ -21,7 +21,6 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
-use pocketmine\utils\Timezone;
 use pocketmine\utils\Utils;
 use function date;
 use function mktime;
@@ -79,26 +78,26 @@ class JoinStatsCommand extends Command{
 			self::add('help', function(CommandSender $sender, array $args): void{
 				$gray = TextFormat::GRAY;
 				$sender->sendMessage(Loader::PREFIX . 'Available Commands: ' . TextFormat::EOL .
-					$gray . '/joinstats ' . TextFormat::WHITE . 'day' . TextFormat::BLACK . ' => ' . $gray .
+					$gray . '/joinstats ' . TextFormat::WHITE . 'day' . TextFormat::BLACK . ' : ' . $gray .
 					'Find out how many people entered the server ' . TextFormat::AQUA . 'today' . TextFormat::EOL .
 
-					$gray . '/joinstats ' . TextFormat::WHITE . 'hour' . TextFormat::BLACK . ' => ' . $gray .
+					$gray . '/joinstats ' . TextFormat::WHITE . 'hour' . TextFormat::BLACK . ' : ' . $gray .
 					'Find out how many people entered the server this ' . TextFormat::AQUA . 'hour' . TextFormat::EOL .
 
-					$gray . '/joinstats ' . TextFormat::WHITE . 'week' . TextFormat::BLACK . ' => ' . $gray .
+					$gray . '/joinstats ' . TextFormat::WHITE . 'week' . TextFormat::BLACK . ' : ' . $gray .
 					'Find out how many people entered the server last 1 ' . TextFormat::AQUA . 'week' . TextFormat::EOL .
 
-					$gray . '/joinstats ' . TextFormat::WHITE . 'month' . TextFormat::BLACK . ' => ' . $gray .
+					$gray . '/joinstats ' . TextFormat::WHITE . 'month' . TextFormat::BLACK . ' : ' . $gray .
 					'Find out how many people entered the server last 1 ' . TextFormat::AQUA . 'month' . TextFormat::EOL .
 
-					$gray . '/joinstats ' . TextFormat::WHITE . 'total' . TextFormat::BLACK . ' => ' . $gray .
+					$gray . '/joinstats ' . TextFormat::WHITE . 'total' . TextFormat::BLACK . ' : ' . $gray .
 					'Find out how many people entered the server ' . TextFormat::AQUA . 'total' . TextFormat::EOL .
 
 					$gray . '/joinstats ' . TextFormat::WHITE . 'date ' . $gray . '<day> <month> <year> <hour: optional>' . TextFormat::BLACK . ' : ' . $gray .
-					'Learn user logins with ' . TextFormat::AQUA . 'date.' . TextFormat::EOL .
-					Loader::PREFIX . 'The plugin coded by ♥ ' . TextFormat::DARK_AQUA . 'Eren5960 ' . $gray . '(' . TextFormat::AQUA . 'github.com/eren5960' . $gray . ')' . PHP_EOL .
-					Loader::PREFIX . TextFormat::GREEN . 'Don\'t forget to give stars if you like it.'
+					'Learn user logins with ' . TextFormat::AQUA . 'date.'
 				);
+				$sender->sendMessage(Loader::PREFIX . 'The plugin coded by ' . TextFormat::RED . '♥' . TextFormat::DARK_AQUA . ' Eren5960 ' . $gray . '(' . TextFormat::AQUA . 'github.com/eren5960' . $gray . ')' . TextFormat::EOL .
+					Loader::PREFIX . TextFormat::GREEN . 'Don\'t forget to give stars if you like it.');
 			});
 			self::add('day', function(CommandSender $sender, array $args): void{
 				$provider = Loader::getInstance()->getProvider();

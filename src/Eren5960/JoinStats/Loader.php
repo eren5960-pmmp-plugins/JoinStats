@@ -89,7 +89,7 @@ class Loader extends PluginBase implements Listener{
 
 		$this->provider = $provider;
 		$provider->setup($file);
-		$this->getLogger()->info(self::PREFIX . TextFormat::DARK_GREEN . ' Provider setted to ' . TextFormat::GREEN . $provider->getName());
+		$this->getLogger()->info(self::PREFIX . TextFormat::GRAY . 'Provider setted to ' . TextFormat::GREEN . $provider->getName());
 	}
 
 	public function getProvider(): ?StatsProvider{

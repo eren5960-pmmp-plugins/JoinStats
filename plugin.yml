@@ -1,5 +1,5 @@
 name: JoinStats
-version: 1
+version: 1.0.1
 api: [3.0.0, 4.0.0]
 main: Eren5960\JoinStats\Loader
 author: Eren5960

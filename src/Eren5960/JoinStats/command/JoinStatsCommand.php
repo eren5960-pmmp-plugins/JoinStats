@@ -21,6 +21,7 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
+use pocketmine\utils\Timezone;
 use pocketmine\utils\Utils;
 use function date;
 use function mktime;
@@ -168,6 +169,10 @@ class JoinStatsCommand extends Command{
 				}
 				$sender->sendMessage(Loader::PREFIX . 'Number of players logged on to the server: ' .
 					TextFormat::AQUA. $provider->getCount(mktime($total ? 0 : $data[3], 0, 0, $data[1], $data[0], $data[2]), $total));
+			});
+			self::add('timezone', function(CommandSender $sender, array $args): void{
+				$sender->sendMessage('Timezone: ' . date_default_timezone_get());
+				$sender->sendMessage('Test date: ' . date('d-m-y H'));
 			});
 		}
 	}

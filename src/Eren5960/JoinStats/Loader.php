@@ -25,6 +25,7 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat;
+use pocketmine\utils\Timezone;
 
 class Loader extends PluginBase implements Listener{
 	public const PREFIX = TextFormat::GRAY . '[' . TextFormat::GOLD . 'Join' . TextFormat::WHITE . 'Stats' . TextFormat::GRAY . ']' . TextFormat::RESET . ' ';
@@ -55,6 +56,18 @@ class Loader extends PluginBase implements Listener{
 			}else{
 				$this->setProvider(ProviderManager::get($provider), $this->getConfig()->get('provider-file'));
 			}
+		}
+
+		if($this->getConfig()->exists('timezone') && $this->getConfig()->get('timezone') !== false){
+			date_default_timezone_set($timezone = $this->getConfig()->get('timezone'));
+			$this->getLogger()->info(TextFormat::GRAY . 'Timezone setted to ' . TextFormat::GOLD . $timezone);
+		}else{
+			$this->getLogger()->critical('Timezone value is not set from config. If you don\'t set this up, the wrong times and dates are required.');
+			$this->getLogger()->info(TextFormat::GRAY . 'Timezone is set to "' . TextFormat::GOLD . 'Europe/Istanbul' . TextFormat::GRAY . '" for this run.');
+			date_default_timezone_set('Europe/Istanbul');
+
+			$this->getConfig()->set('timezone', false);
+			$this->getConfig()->save();
 		}
 	}
 

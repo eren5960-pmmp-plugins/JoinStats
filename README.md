@@ -2,9 +2,9 @@
 This PocketMine-MP plugin **stores the number of players logged in hourly, daily, weekly, monthly and yearly. 
 This helps your server to keep track of your activity.** If you want to use UI Panel, you need [FormAPI](https://github.com/jojoe77777/FormAPI).
 
-| HitCount | License |
-|--------|----------|
-|[![HitCount](http://hits.dwyl.com/Eren5960/JoinStats.svg)](http://hits.dwyl.com/Eren5960/JoinStats)| [![GitHub license](https://img.shields.io/github/license/Eren5960/JoinStats.svg)](https://github.com/Eren5960/JoinStats/blob/master/LICENSE)
+| Hit Count | License | Poggit |
+|--------|----------|-----------|
+|[![HitCount](http://hits.dwyl.com/Eren5960/JoinStats.svg)](http://hits.dwyl.com/Eren5960/JoinStats)| [![GitHub license](https://img.shields.io/github/license/Eren5960/JoinStats.svg)](https://github.com/Eren5960/JoinStats/blob/master/LICENSE)|[![](https://poggit.pmmp.io/shield.state/JoinStats)](https://poggit.pmmp.io/p/JoinStats)
 
 ### Commands & Permissions
 The main command: `/joinstats` or `/js`
@@ -22,8 +22,8 @@ Permission required for main command: `join.stats.commands`
 | -         | -    |  Open the UI panel. |
 
 ### Images
-![Years Image](meta/years.PNG) ![Years Image](meta/months.PNG)
-![Years Image](meta/days.PNG) ![Years Image](meta/hours.PNG)
+![Years Image](meta/years.PNG) ![Months Image](meta/months.PNG)
+![Days Image](meta/days.PNG) ![Hours Image](meta/hours.PNG)
 
 ### TODO 
  - Increase and drop statistics

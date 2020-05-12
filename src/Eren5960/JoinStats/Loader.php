@@ -33,7 +33,7 @@ class Loader extends PluginBase implements Listener{
 	/** @var StatsProvider */
 	private $provider = null;
 
-	protected function onLoad(){
+	public function onLoad(){
 		self::setInstance($this);
 		ProviderManager::add(new YamlProvider(), ["Yaml"]);
 		ProviderManager::add(new JsonProvider(), ["Json"]);
@@ -83,7 +83,7 @@ class Loader extends PluginBase implements Listener{
 		return $this->provider;
 	}
 
-	protected function onDisable(){
+	public function onDisable(){
 		if($this->provider !== null){
 			$this->provider->save();
 			$this->provider->destroy();

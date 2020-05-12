@@ -15,7 +15,6 @@ declare(strict_types=1);
  
 namespace Eren5960\JoinStats\provider;
 
-use Eren5960\JoinStats\exception\ProviderException;
 use function get_class;
 
 abstract class ProviderManager{

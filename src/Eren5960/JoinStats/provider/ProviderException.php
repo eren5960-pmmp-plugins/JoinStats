@@ -13,7 +13,7 @@
  */
 declare(strict_types=1);
  
-namespace Eren5960\JoinStats\exception;
+namespace Eren5960\JoinStats\provider;
 
 use Exception;
 

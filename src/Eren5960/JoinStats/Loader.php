@@ -25,7 +25,6 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat;
-use pocketmine\utils\Timezone;
 
 class Loader extends PluginBase implements Listener{
 	public const PREFIX = TextFormat::GRAY . '[' . TextFormat::GOLD . 'Join' . TextFormat::WHITE . 'Stats' . TextFormat::GRAY . ']' . TextFormat::RESET . ' ';

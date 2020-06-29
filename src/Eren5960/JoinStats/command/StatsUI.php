@@ -8,11 +8,11 @@
  * |_______)_|   |_____)_| |_(______/      |_|______/ \_____/
  *
  * @author Eren5960
- * @link https://github.com/Eren5960
- * @date 12 Mayıs 2020
+ * @link   https://github.com/Eren5960
+ * @date   12 Mayıs 2020
  */
 declare(strict_types=1);
- 
+
 namespace Eren5960\JoinStats\command;
 
 use Eren5960\JoinStats\Loader;
@@ -29,11 +29,10 @@ use function floor;
 use function explode;
 
 /** TODO: Clean UP! */
-
 class StatsUI{
-    public static function main(Player $player): void{
+	public static function main(Player $player): void{
 		$data = self::getData(Loader::getInstance()->getProvider());
-		$form = new SimpleForm(function (Player $player, ?int $index) use($data): void{
+		$form = new SimpleForm(function(Player $player, ?int $index) use ($data): void{
 			if($index !== null){
 				self::months($player, array_values($data)[$index], array_keys($data)[$index]);
 			}
@@ -44,28 +43,28 @@ class StatsUI{
 			$form->addButton('# ' . $year . ' #');
 		}
 		$form->sendToPlayer($player);
-    }
+	}
 
-    public static function months(Player $player, array $months, int $year): void{
-    	$total = $months['total'];
-	    unset($months['total']);
-	    $form = new SimpleForm(function (Player $player, ?int $index) use($months, $total, $year): void{
-		    if($index !== null){
-			    self::days($player, $months + ['total' => $total], array_values($months)[$index], $year, date("F", mktime(0, 0, 0, (int) array_keys($months)[$index], 0)));
-		    }
-	    });
-	    $form->setTitle('Join Stats - Months of ' . $year);
-	    $form->setContent(TextFormat::GRAY . 'Number of players logged into the server this year: ' . TextFormat::AQUA . $total);
-	    foreach($months as $month => $days){
-		    $form->addButton(date("F", mktime(0, 0, 0, $month, 0)));
-	    }
-	    $form->sendToPlayer($player);
-    }
+	public static function months(Player $player, array $months, int $year): void{
+		$total = $months['total'];
+		unset($months['total']);
+		$form = new SimpleForm(function(Player $player, ?int $index) use ($months, $total, $year): void{
+			if($index !== null){
+				self::days($player, $months + ['total' => $total], array_values($months)[$index], $year, date("F", mktime(0, 0, 0, (int) array_keys($months)[$index], 0)));
+			}
+		});
+		$form->setTitle('Join Stats - Months of ' . $year);
+		$form->setContent(TextFormat::GRAY . 'Number of players logged into the server this year: ' . TextFormat::AQUA . $total);
+		foreach($months as $month => $days){
+			$form->addButton(date("F", mktime(0, 0, 0, $month, 0)));
+		}
+		$form->sendToPlayer($player);
+	}
 
 	public static function days(Player $player, array $months, array $days, int $year, string $month): void{
 		$total = $days['total'];
 		unset($days['total']);
-		$form = new SimpleForm(function (Player $player, ?int $index) use($months, $days, $total, $year, $month): void{
+		$form = new SimpleForm(function(Player $player, ?int $index) use ($months, $days, $total, $year, $month): void{
 			if($index === null || ($index !== 0 && $index % 7 === 0)){
 				self::months($player, $months, $year);
 			}else{
@@ -91,7 +90,7 @@ class StatsUI{
 	}
 
 	public static function hours(Player $player, array $months, array $days, array $hours, int $year, string $month, int $day): void{
-		$form = new CustomForm(function (Player $player) use($months, $days, $year, $month): void{
+		$form = new CustomForm(function(Player $player) use ($months, $days, $year, $month): void{
 			self::days($player, $months, $days, $year, $month);
 		});
 		$form->setTitle('Join Stats - ' . date('d/m/Y', $day));
@@ -104,7 +103,7 @@ class StatsUI{
 		$form->sendToPlayer($player);
 	}
 
-	public static function getData(StatsProvider $provider) : array{
+	public static function getData(StatsProvider $provider): array{
 		$data = [];
 		foreach($provider->getData() as $index => $hour_data){
 			$day = (int) explode('-', $index)[0];

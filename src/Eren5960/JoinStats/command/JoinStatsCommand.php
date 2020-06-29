@@ -8,11 +8,11 @@
  * |_______)_|   |_____)_| |_(______/      |_|______/ \_____/
  *
  * @author Eren5960
- * @link https://github.com/Eren5960
- * @date 12 Mayıs 2020
+ * @link   https://github.com/Eren5960
+ * @date   12 Mayıs 2020
  */
 declare(strict_types=1);
- 
+
 namespace Eren5960\JoinStats\command;
 
 use Eren5960\JoinStats\Loader;
@@ -69,7 +69,8 @@ class JoinStatsCommand extends Command{
 	}
 
 	public static function add(string $name, \Closure $closure): void{
-		Utils::validateCallableSignature(function(CommandSender $sender, array $args) : void{}, $closure);
+		Utils::validateCallableSignature(function(CommandSender $sender, array $args): void{
+		}, $closure);
 		self::$sub_commands[$name] = $closure;
 	}
 
@@ -106,9 +107,9 @@ class JoinStatsCommand extends Command{
 			});
 			self::add('hour', function(CommandSender $sender, array $args): void{
 				$provider = Loader::getInstance()->getProvider();
-				$sender->sendMessage(Loader::PREFIX . 'Number of players logged on to the server at this hour: '.
+				$sender->sendMessage(Loader::PREFIX . 'Number of players logged on to the server at this hour: ' .
 					TextFormat::AQUA . $provider->getCount(
-					mktime((int) date('H'), 0, 0, (int) date('m'), (int) date('d'), (int) date('Y')), false));
+						mktime((int) date('H'), 0, 0, (int) date('m'), (int) date('d'), (int) date('Y')), false));
 			});
 			self::add('week', function(CommandSender $sender, array $args): void{
 				$provider = Loader::getInstance()->getProvider();
@@ -116,10 +117,10 @@ class JoinStatsCommand extends Command{
 				$month = (int) date('m');
 				$year = (int) date('Y');
 
-				for($i=0;$i<7;$i++){
+				for($i = 0; $i < 7; $i++){
 					$count += $provider->getCount(mktime(0, 0, 0, $month, ((int) date('d')) - $i, $year), true);
 				}
-				$sender->sendMessage(Loader::PREFIX . 'Number of players logged on to the server last 1 week: '.
+				$sender->sendMessage(Loader::PREFIX . 'Number of players logged on to the server last 1 week: ' .
 					TextFormat::AQUA . $count);
 			});
 			self::add('month', function(CommandSender $sender, array $args): void{
@@ -127,30 +128,30 @@ class JoinStatsCommand extends Command{
 				$count = 0;
 				$month = (int) date('m');
 				$year = (int) date('Y');
-				for($i=0;$i<30;$i++){
+				for($i = 0; $i < 30; $i++){
 					$count += $provider->getCount(mktime(0, 0, 0, $month, ((int) date('d')) - $i, $year), true);
 				}
 				$sender->sendMessage(Loader::PREFIX . 'Number of players logged on to the server last 1 month: ' .
-					TextFormat::AQUA .  $count);
+					TextFormat::AQUA . $count);
 			});
 			self::add('year', function(CommandSender $sender, array $args): void{
 				$provider = Loader::getInstance()->getProvider();
 				$count = 0;
 				$year = (int) date('Y');
-				for($y=0;$y<12;$y++){
-					for($i=0;$i<30;$i++){
+				for($y = 0; $y < 12; $y++){
+					for($i = 0; $i < 30; $i++){
 						$count += $provider->getCount(mktime(0, 0, 0, ((int) date('m')) - $y, ((int) date('d')) - $i, $year), true);
 					}
 				}
 				$sender->sendMessage(Loader::PREFIX . 'Number of players logged on to the server last 1 year: ' .
-					TextFormat::AQUA .  $count);
+					TextFormat::AQUA . $count);
 			});
 			self::add('total', function(CommandSender $sender, array $args): void{
 				$provider = Loader::getInstance()->getProvider();
 				$count = 0;
 				$year = (int) date('Y');
-				for($y=0;$y<24;$y++){ // 2 years
-					for($i=0;$i<30;$i++){
+				for($y = 0; $y < 24; $y++){ // 2 years
+					for($i = 0; $i < 30; $i++){
 						$count += $provider->getCount(mktime(0, 0, 0, ((int) date('m')) - $y, ((int) date('d')) - $i, $year), true);
 					}
 				}
@@ -167,7 +168,7 @@ class JoinStatsCommand extends Command{
 					return;
 				}
 				$sender->sendMessage(Loader::PREFIX . 'Number of players logged on to the server: ' .
-					TextFormat::AQUA. $provider->getCount(mktime($total ? 0 : $data[3], 0, 0, $data[1], $data[0], $data[2]), $total));
+					TextFormat::AQUA . $provider->getCount(mktime($total ? 0 : $data[3], 0, 0, $data[1], $data[0], $data[2]), $total));
 			});
 			self::add('timezone', function(CommandSender $sender, array $args): void{
 				$sender->sendMessage('Timezone: ' . date_default_timezone_get());

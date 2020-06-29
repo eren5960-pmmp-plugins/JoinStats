@@ -7,6 +7,6 @@ website: stormgames.net
 description: Track the number of players entering your server.
 
 permissions:
-  join.stats.command:
-    description: Permission to use the /joinstats command
-    default: op
+    join.stats.command:
+        description: Permission to use the /joinstats command
+        default: op

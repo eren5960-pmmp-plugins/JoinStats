@@ -8,13 +8,13 @@
  * |_______)_|   |_____)_| |_(______/      |_|______/ \_____/
  *
  * @author Eren5960
- * @link https://github.com/Eren5960
- * @date 12 Mayıs 2020
+ * @link   https://github.com/Eren5960
+ * @date   12 Mayıs 2020
  */
 declare(strict_types=1);
- 
+
 namespace Eren5960\JoinStats;
- 
+
 use Eren5960\JoinStats\command\JoinStatsCommand;
 use Eren5960\JoinStats\provider\JsonProvider;
 use Eren5960\JoinStats\provider\ProviderManager;
@@ -30,6 +30,7 @@ class Loader extends PluginBase implements Listener{
 	public const PREFIX = TextFormat::GRAY . '[' . TextFormat::GOLD . 'Join' . TextFormat::WHITE . 'Stats' . TextFormat::GRAY . ']' . TextFormat::RESET . ' ';
 
 	use SingletonTrait;
+
 	/** @var StatsProvider */
 	private $provider = null;
 

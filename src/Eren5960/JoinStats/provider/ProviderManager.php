@@ -8,11 +8,11 @@
  * |_______)_|   |_____)_| |_(______/      |_|______/ \_____/
  *
  * @author Eren5960
- * @link https://github.com/Eren5960
- * @date 12 Mayıs 2020
+ * @link   https://github.com/Eren5960
+ * @date   12 Mayıs 2020
  */
 declare(strict_types=1);
- 
+
 namespace Eren5960\JoinStats\provider;
 
 use function get_class;

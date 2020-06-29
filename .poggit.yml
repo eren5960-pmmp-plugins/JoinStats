@@ -1,8 +1,8 @@
 --- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/Eren5960/JoinStats
 build-by-default: true
 branches:
-- master
+    - master
 projects:
-  JoinStats:
-    path: ""
+    JoinStats:
+        path: ""
 ...

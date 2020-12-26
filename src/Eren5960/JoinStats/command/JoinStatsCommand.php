@@ -16,7 +16,8 @@ declare(strict_types=1);
 namespace Eren5960\JoinStats\command;
 
 use Eren5960\JoinStats\Loader;
-use jojoe77777\FormAPI\FormAPI;
+use jojoe77777\FormAPI\CustomForm;
+use jojoe77777\FormAPI\SimpleForm;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
@@ -43,7 +44,7 @@ class JoinStatsCommand extends Command{
 		$sub = array_shift($args);
 		if($sender instanceof Player){
 			if($sub === null){
-				if(class_exists(FormAPI::class)){
+				if(class_exists(CustomForm::class) && class_exists(SimpleForm::class)){
 					StatsUI::main($sender);
 					return;
 				}else{
@@ -172,7 +173,7 @@ class JoinStatsCommand extends Command{
 			});
 			self::add('timezone', function(CommandSender $sender, array $args): void{
 				$sender->sendMessage('Timezone: ' . date_default_timezone_get());
-				$sender->sendMessage('Test date: ' . date('d-m-y H'));
+				$sender->sendMessage('Test date: ' . date('d-m-y H:i:s'));
 			});
 		}
 	}

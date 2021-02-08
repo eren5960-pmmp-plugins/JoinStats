@@ -34,13 +34,13 @@ class Loader extends PluginBase implements Listener{
 	/** @var StatsProvider */
 	private $provider = null;
 
-	public function onLoad(){
+	public function onLoad(): void{
 		self::setInstance($this);
 		ProviderManager::add(new YamlProvider(), ["Yaml"]);
 		ProviderManager::add(new JsonProvider(), ["Json"]);
 	}
 
-	public function onEnable(){
+	public function onEnable(): void{
 		$this->reloadConfig();
 		$this->getServer()->getCommandMap()->register('joinstats', new JoinStatsCommand('joinstats', 'See stats', null, ['js']));
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
@@ -96,7 +96,7 @@ class Loader extends PluginBase implements Listener{
 		return $this->provider;
 	}
 
-	public function onDisable(){
+	public function onDisable(): void{
 		if($this->provider !== null){
 			$this->provider->save();
 			$this->provider->destroy();

@@ -18,45 +18,45 @@ namespace Eren5960\JoinStats\provider;
 use Eren5960\JoinStats\utils\ProviderCountTrait;
 use pocketmine\utils\Config;
 
-class JsonProvider implements StatsProvider{
-	use ProviderCountTrait;
+class JsonProvider implements StatsProvider {
+    use ProviderCountTrait;
 
-	/** @var string */
-	private $file;
-	/** @var Config */
-	private $config;
+    /** @var string */
+    private $file;
+    /** @var Config */
+    private $config;
 
-	public function setup(string $file): void{
-		$this->file = $file;
-		$this->config = new Config($file, Config::JSON);
-	}
+    public function setup(string $file): void {
+        $this->file = $file;
+        $this->config = new Config($file, Config::JSON);
+    }
 
-	public function getName(): string{
-		return 'Json';
-	}
+    public function getName(): string {
+        return 'Json';
+    }
 
-	public function getSuffix(): string{
-		return 'json';
-	}
+    public function getSuffix(): string {
+        return 'json';
+    }
 
-	public function save(): void{
-		$this->config->save();
-	}
+    public function save(): void {
+        $this->config->save();
+    }
 
-	public function getFile(): string{
-		return $this->file;
-	}
+    public function getFile(): string {
+        return $this->file;
+    }
 
-	public function getConfig(): Config{
-		return $this->config;
-	}
+    public function getConfig(): Config {
+        return $this->config;
+    }
 
-	public function getData(): array{
-		return $this->config->getAll();
-	}
+    public function getData(): array {
+        return $this->config->getAll();
+    }
 
-	public function destroy(): void{
-		$this->file = null;
-		$this->config = null;
-	}
+    public function destroy(): void {
+        $this->file = null;
+        $this->config = null;
+    }
 }

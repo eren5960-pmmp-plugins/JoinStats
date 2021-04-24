@@ -17,5 +17,5 @@ namespace Eren5960\JoinStats\provider;
 
 use Exception;
 
-class ProviderException extends Exception{
+class ProviderException extends Exception {
 }

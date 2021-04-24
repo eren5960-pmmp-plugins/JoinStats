@@ -18,45 +18,45 @@ namespace Eren5960\JoinStats\provider;
 use Eren5960\JoinStats\utils\ProviderCountTrait;
 use pocketmine\utils\Config;
 
-class YamlProvider implements StatsProvider{
-	use ProviderCountTrait;
+class YamlProvider implements StatsProvider {
+    use ProviderCountTrait;
 
-	/** @var string */
-	private $file;
-	/** @var Config */
-	private $config;
+    /** @var string */
+    private $file;
+    /** @var Config */
+    private $config;
 
-	public function setup(string $file): void{
-		$this->file = $file;
-		$this->config = new Config($file, Config::YAML);
-	}
+    public function setup(string $file): void {
+        $this->file = $file;
+        $this->config = new Config($file, Config::YAML);
+    }
 
-	public function getName(): string{
-		return 'Yaml';
-	}
+    public function getName(): string {
+        return 'Yaml';
+    }
 
-	public function getSuffix(): string{
-		return 'yml';
-	}
+    public function getSuffix(): string {
+        return 'yml';
+    }
 
-	public function save(): void{
-		$this->config->save();
-	}
+    public function save(): void {
+        $this->config->save();
+    }
 
-	public function getFile(): string{
-		return $this->file;
-	}
+    public function getFile(): string {
+        return $this->file;
+    }
 
-	public function getConfig(): Config{
-		return $this->config;
-	}
+    public function getConfig(): Config {
+        return $this->config;
+    }
 
-	public function getData(): array{
-		return $this->config->getAll();
-	}
+    public function getData(): array {
+        return $this->config->getAll();
+    }
 
-	public function destroy(): void{
-		$this->file = null;
-		$this->config = null;
-	}
+    public function destroy(): void {
+        $this->file = null;
+        $this->config = null;
+    }
 }

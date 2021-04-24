@@ -15,22 +15,22 @@ declare(strict_types=1);
 
 namespace Eren5960\JoinStats\provider;
 
-interface StatsProvider{
-	public function setup(string $file): void;
+interface StatsProvider {
+    public function setup(string $file): void;
 
-	public function getName(): string;
+    public function getName(): string;
 
-	public function getSuffix(): string;
+    public function getSuffix(): string;
 
-	public function save(): void;
+    public function save(): void;
 
-	public function destroy(): void;
+    public function destroy(): void;
 
-	/** Add to the total number of players and the number of hours */
-	public function addCount(): void;
+    /** Add to the total number of players and the number of hours */
+    public function addCount(): void;
 
-	/** get number of players */
-	public function getCount(int $date, bool $total): int;
+    /** get number of players */
+    public function getCount(int $date, bool $total): int;
 
-	public function getData(): array;
+    public function getData(): array;
 }

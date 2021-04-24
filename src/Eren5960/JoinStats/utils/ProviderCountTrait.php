@@ -15,14 +15,23 @@ declare(strict_types=1);
 
 namespace Eren5960\JoinStats\utils;
 
-trait ProviderCountTrait{
-	public function addCount(): void{
-		$date = date('d-m-Y');
-		$this->getConfig()->setNested($date . '.' . 'total', $this->getConfig()->getNested($date . '.' . 'total', 0) + 1);
-		$this->getConfig()->setNested($date . '.' . date('H'), $this->getConfig()->getNested($date . '.' . date('H'), 0) + 1);
-	}
+trait ProviderCountTrait {
+    public function addCount(): void {
+        $date = date('d-m-Y');
+        $this->getConfig()->setNested(
+            $date . '.' . 'total',
+            $this->getConfig()->getNested($date . '.' . 'total', 0) + 1
+        );
+        $this->getConfig()->setNested(
+            $date . '.' . date('H'),
+            $this->getConfig()->getNested($date . '.' . date('H'), 0) + 1
+        );
+    }
 
-	public function getCount(int $date, bool $total): int{
-		return $this->getConfig()->getNested(date('d-m-Y', $date) . '.' . ($total ? 'total' : date('H', $date)), 0);
-	}
+    public function getCount(int $date, bool $total): int {
+        return $this->getConfig()->getNested(
+            date('d-m-Y', $date) . '.' . ($total ? 'total' : date('H', $date)),
+            0
+        );
+    }
 }

@@ -24,46 +24,77 @@ use function fgets;
 use function is_numeric;
 use const STDIN;
 
-final class SetupPlugin{
-	/** @var null|StatsProvider */
-	private $select = null;
+final class SetupPlugin {
+    /** @var null|StatsProvider */
+    private $select = null;
 
-	public function __construct(){
-		Terminal::writeLine(Loader::PREFIX . TextFormat::AQUA . 'Welcome to JoinStats setup wizard.');
-		Terminal::writeLine(Loader::PREFIX . TextFormat::AQUA . 'Available providers: ');
-		/** @var StatsProvider[] $providers */
-		$providers = [];
+    public function __construct() {
+        Terminal::writeLine(
+            Loader::PREFIX .
+                TextFormat::AQUA .
+                'Welcome to JoinStats setup wizard.'
+        );
+        Terminal::writeLine(
+            Loader::PREFIX . TextFormat::AQUA . 'Available providers: '
+        );
+        /** @var StatsProvider[] $providers */
+        $providers = [];
 
-		foreach(ProviderManager::all() as $name => $provider){
-			if(array_search($provider, $providers) === false){
-				$providers[] = $provider;
-			}
-		}
+        foreach (ProviderManager::all() as $name => $provider) {
+            if (array_search($provider, $providers) === false) {
+                $providers[] = $provider;
+            }
+        }
 
-		foreach($providers as $i => $provider){
-			Terminal::writeLine(Loader::PREFIX . TextFormat::GRAY . '[' . TextFormat::GOLD . $i . TextFormat::GRAY . '] => ' . TextFormat::YELLOW . $provider->getName());
-		}
+        foreach ($providers as $i => $provider) {
+            Terminal::writeLine(
+                Loader::PREFIX .
+                    TextFormat::GRAY .
+                    '[' .
+                    TextFormat::GOLD .
+                    $i .
+                    TextFormat::GRAY .
+                    '] => ' .
+                    TextFormat::YELLOW .
+                    $provider->getName()
+            );
+        }
 
-		$i = -1;
-		do{
-			++$i;
+        $i = -1;
+        do {
+            ++$i;
 
-			if($i === 0){
-				Terminal::write(Loader::PREFIX . TextFormat::GREEN . 'Please type the provider type: ' . TextFormat::WHITE);
-			}else{
-				Terminal::writeLine(Loader::PREFIX . TextFormat::RED . 'Type is incorrect!' . TextFormat::WHITE);
-				Terminal::write(Loader::PREFIX . TextFormat::GREEN . 'Please type the provider type (int): ' . TextFormat::WHITE);
-			}
-			$get = trim(fgets(STDIN));
-		}while(!(is_numeric($get) && isset($providers[intval($get)])));
+            if ($i === 0) {
+                Terminal::write(
+                    Loader::PREFIX .
+                        TextFormat::GREEN .
+                        'Please type the provider type: ' .
+                        TextFormat::WHITE
+                );
+            } else {
+                Terminal::writeLine(
+                    Loader::PREFIX .
+                        TextFormat::RED .
+                        'Type is incorrect!' .
+                        TextFormat::WHITE
+                );
+                Terminal::write(
+                    Loader::PREFIX .
+                        TextFormat::GREEN .
+                        'Please type the provider type (int): ' .
+                        TextFormat::WHITE
+                );
+            }
+            $get = trim(fgets(STDIN));
+        } while (!(is_numeric($get) && isset($providers[intval($get)])));
 
-		$this->select = $providers[(int) $get];
-	}
+        $this->select = $providers[(int) $get];
+    }
 
-	/**
-	 * @return null|StatsProvider
-	 */
-	public function getSelect(): ?StatsProvider{
-		return $this->select;
-	}
+    /**
+     * @return null|StatsProvider
+     */
+    public function getSelect(): ?StatsProvider {
+        return $this->select;
+    }
 }
